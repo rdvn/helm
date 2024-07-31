@@ -40,6 +40,7 @@ template:
       - name: {{ .Chart.Name }}
         image: {{ include "ntfy.image" . }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
+        args: [ "serve" ]
         env:
             {{- if (or .Values.ntfy.smtp.senderUser .Values.ntfy.smtp.existingSecret) }}
           - name: NTFY_SMTP_SENDER_USER
