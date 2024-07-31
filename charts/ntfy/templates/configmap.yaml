@@ -14,7 +14,7 @@ metadata:
   {{- toYaml .Values.configMap.annotations | nindent 4 }}
   {{- end }}
 data:
-  config.yml: |
+  server.yml: |
     base-url: {{ .Values.ntfy.baseURL }}
     listen-http: {{ .Values.ntfy.listenHTTP }}
     web-root: {{ .Values.ntfy.webRoot }}
