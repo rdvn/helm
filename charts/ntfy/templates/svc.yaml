@@ -44,10 +44,12 @@ spec:
   externalIPs: {{ toYaml .Values.service.externalIPs | nindent 4 }}
   {{- end }}
   ports:
-    - port: {{ .Values.service.ports.http }}
+    {{- if .Values.ntfy.listenHTTP }}
+    - port: {{ .Values.service.port }}
       targetPort: {{ .Values.ntfy.listenHTTP | trimPrefix ":" }}
       protocol: TCP
       name: http
+    {{- end }}
     {{- if .Values.ntfy.listenHTTPS }}
     - port: {{ .Values.service.ports.https }}
       targetPort: {{ .Values.ntfy.listenHTTPS | trimPrefix ":" }}
