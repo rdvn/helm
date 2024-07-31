@@ -108,15 +108,15 @@ template:
             mountPath: {{ .Values.ntfy.data.rootPath }}
             {{- end }}
         {{- if .Values.volumeMounts }}
-          {{- toYaml .Values.volumeMounts | nindent 12 }}
+          {{- toYaml .Values.volumeMounts | nindent 10 }}
         {{- end }}
         {{- if .Values.resources }}
         resources:
-          {{- toYaml .Values.resources | nindent 12 }}
+          {{- toYaml .Values.resources | nindent 10 }}
         {{- end }}
         {{- if .Values.securityContext }}
         securityContext:
-          {{- toYaml .Values.securityContext | nindent 12 }}
+          {{- toYaml .Values.securityContext | nindent 10 }}
         {{- end }}
         {{- if .Values.livenessProbe.enabled }}
         livenessProbe:
