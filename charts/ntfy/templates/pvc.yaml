@@ -2,7 +2,7 @@
 {{- /*
   Cache DB PVC
 */}}
-{{- if not .Values.ntfy.data.pvc.existingClaim }}
+{{- if and ( not .Values.ntfy.data.pvc.existingClaim ) ( eq .Values.ntfy.persistence true ) }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:

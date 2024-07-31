@@ -128,6 +128,10 @@ ntfy:
   ##
   globalTopicLimit: 15000
 
+  ## @param ntfy.persistence [default: false] Enable pvc persistence.
+  ##
+  persistence: false
+
   ## Data configuration
   ##
   data:
@@ -412,8 +416,8 @@ ntfy:
 ## @param configMap.labels Extra Labels for the ConfigMap resource
 
 configMap:
-  annotations: { }
-  labels: { }
+  annotations: {}
+  labels: {}
 
 ## @section Common Secret parameters
 ##
@@ -423,8 +427,8 @@ configMap:
 ## @param secret.labels Common extra labels for the SMTP, HIBP, Admin and Database secrets
 
 secret:
-  annotations: { }
-  labels: { }
+  annotations: {}
+  labels: {}
 
 ## @section Ingress parameters
 ##
@@ -441,15 +445,14 @@ ingress:
   enabled: false
   className: ""
   whitelist: ""
-  annotations: { }
+  annotations: {}
   # kubernetes.io/ingress.class: nginx
   # kubernetes.io/tls-acme: "true"
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
-  extraHosts:
-    []
+  extraHosts: []
   # - host: domain.tld
   #   paths:
   #     - path: /
@@ -483,10 +486,10 @@ service:
   extraPorts: []
   ## @param service.annotations [object] Annotations for the service resource
   ##
-  annotations: { }
+  annotations: {}
   ## @param service.labels [object] Labels for the service resource
   ##
-  labels: { }
+  labels: {}
   ## @param service.externalTrafficPolicy [default: Cluster] The external traffic policy for the service
   ## ref: https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
   ##
@@ -531,7 +534,7 @@ service:
   ##   clientIP:
   ##     timeoutSeconds: 300
   ##
-  sessionAffinityConfig: { }
+  sessionAffinityConfig: {}
   ## @param service.ipFamilyPolicy [object] The ipFamilyPolicy
   ## ref: https://kubernetes.io/docs/concepts/services-networking/dual-stack/
   ##
@@ -562,7 +565,7 @@ rbac:
 serviceAccount:
   create: true
   automount: false
-  annotations: { }
+  annotations: {}
   name: ""
   secrets: []
 
@@ -664,8 +667,7 @@ podDisruptionBudget:
 ## ref: https://kubernetes.io/docs/user-guide/compute-resources/
 ## @param resources The resource limits/requests for the ntfy pod
 ##
-resources:
-  { }
+resources: {}
 # limits:
 #   cpu: 100m
 #   memory: 128Mi
@@ -691,7 +693,7 @@ initContainers: []
 ## @param nodeSelector Node labels for pod assignment
 ## ref: https://kubernetes.io/docs/user-guide/node-selection/
 ##
-nodeSelector: { }
+nodeSelector: {}
 
 ## @param tolerations Tolerations for pod assignment
 ## ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
@@ -701,23 +703,22 @@ tolerations: []
 ## @param affinity Affinity for pod assignment
 ## ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
 ##
-affinity: { }
+affinity: {}
 
 ## @param strategy Specify a deployment strategy for the ntfy pod
 ##
-strategy:
-  { }
+strategy: {}
 #  type: RollingUpdate
 #  rollingUpdate:
 #    maxUnavailable: 1
 
 ## @param podAnnotations Extra annotations for the ntfy pod
 ##
-podAnnotations: { }
+podAnnotations: {}
 
 ## @param podLabels Extra labels for the ntfy pod
 ##
-podLabels: { }
+podLabels: {}
 #  pod-security.kubernetes.io/warn: privileged
 #  pod-security.kubernetes.io/audit: privileged
 #  pod-security.kubernetes.io/enforce: baseline
@@ -733,8 +734,7 @@ priorityClassName: ""
 ## @param podSecurityContext Security context settings for the ntfy pod
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 ##
-podSecurityContext:
-  { }
+podSecurityContext: {}
 # fsGroup: 1001
 # supplementalGroups:
 #   - 1001
@@ -742,8 +742,7 @@ podSecurityContext:
 ## @param securityContext General security context settings for
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
 ##
-securityContext:
-  { }
+securityContext: {}
 # allowPrivilegeEscalation: false
 # privileged: false
 # readOnlyRootFilesystem: true
